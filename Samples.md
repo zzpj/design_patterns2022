@@ -282,35 +282,24 @@ report.createNewTable(30, 30);
 public interface SearchStrategy {
     int findElementIndex(List<String> elements, String element);
 }
-```
 
-```java
-public class BinarySearchStrategy implements SearchStrategy {
+class BinarySearchStrategy implements SearchStrategy {
 
     @Override
     public int findElementIndex(List<String> elements, String element) {
         return Collections.binarySearch(elements, element);
     }
 }
-```
 
-```java
-public class LinearSearchStrategy  implements SearchStrategy{
+class LinearSearchStrategy implements SearchStrategy {
+
     @Override
     public int findElementIndex(List<String> elements, String element) {
-
-        for (int i = 0; i < elements.size(); i++) {
-            if(elements.get(i).equals(element)) {
-                return i;
-            }
-        }
-        return -1;
+        return elements.indexOf(element);
     }
 }
-```
 
-```java
-public class ElementFinder {
+class ElementFinder {
 
     SearchStrategy searchStrategy;
 
@@ -325,26 +314,31 @@ public class ElementFinder {
 ```
 
 ```java
-List<String> words = Arrays.asList("aa", "bb", "cc", "dd");
+class ElementFinderTest {
 
-ElementFinder elementFinder;
+    List<String> words = Stream.of("aa", "bb", "cc", "dd", "ee").toList();
 
-@Test
-public void shouldSearchUsingLinear() {
+    ElementFinder elementFinder;
 
-    elementFinder = new ElementFinder(new LinearSearchStrategy());
-    int actual = elementFinder.findElement(words, "cc");
-    assertEquals(2, actual);
-}
+    @ParameterizedTest
+    @CsvSource({"dd, 3", "ee, 4"})
+    public void shouldCheckLinearSearch(String word, int index) {
 
-@Test
-public void shouldSearchUsingBinary() {
+        elementFinder = new ElementFinder(new LinearSearchStrategy());
+        int actualIndex = elementFinder.findElement(words, word);
+        assertEquals(index, actualIndex);
 
+    }
 
-    elementFinder = new ElementFinder(new BinarySearchStrategy());
-    int actual = elementFinder.findElement(words, "cc");
-    assertEquals(2, actual);
+    @ParameterizedTest
+    @CsvSource({"aa, 0", "ee, 4"})
+    public void shouldCheckBinarySearch(String word, int index) {
 
+        elementFinder = new ElementFinder(new BinarySearchStrategy());
+        int actualIndex = elementFinder.findElement(words, word);
+        assertEquals(index, actualIndex);
+
+    }
 }
 ```
 ## Proxy
