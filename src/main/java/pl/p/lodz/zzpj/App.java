@@ -1,6 +1,10 @@
 package pl.p.lodz.zzpj;
 
 import pl.p.lodz.zzpj.builder.Building;
+import pl.p.lodz.zzpj.factory.PDFReport;
+import pl.p.lodz.zzpj.factory.PDFReportGenerator;
+import pl.p.lodz.zzpj.factory.Report;
+import pl.p.lodz.zzpj.factory.ReportGenerator;
 import pl.p.lodz.zzpj.singleton.Config;
 
 public class App {
@@ -9,6 +13,11 @@ public class App {
     static Config config2;
 
     public static void main(String[] args) throws InterruptedException {
+
+
+//        ReportGenerator reportGenerator = new PDFReportGenerator();
+//        Report report = reportGenerator.generateReport();
+//        report.createNewPage();
 
 //        Building building = new Building.BuildingBuilder().buildingCompanyName("NewComp").constructionYear(1999).hasGarden(1).build();
 
