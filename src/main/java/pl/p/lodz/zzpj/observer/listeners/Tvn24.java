@@ -6,6 +6,6 @@ public class Tvn24 implements EventListener {
 
     @Override
     public void update(String newInfo) {
-        System.out.println("Pasek TVN23: " + newInfo);
+        System.out.println("Pasek TVN24: " + newInfo);
     }
 }
