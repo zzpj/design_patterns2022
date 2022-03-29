@@ -5,7 +5,7 @@ import java.util.Vector;
 
 public class NationalNewsAgency {
     private String news;
-    private List<NewsTelevision> televisions = new Vector<NewsTelevision>();
+    private List<NewsObserver> televisions = new Vector<NewsObserver>();
 
     public void addTelevision(NewsTelevision television) {
         this.televisions.add(television);
