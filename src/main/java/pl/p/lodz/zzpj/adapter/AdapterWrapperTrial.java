@@ -34,5 +34,15 @@ class VlcPlayer implements MediaPackage {
     }
 }
 
-class FormatAdapter {
+class FormatAdapter implements MediaPackage {
+    private final MediaPlayer mediaPlayer;
+
+    public FormatAdapter(MediaPlayer mediaPlayer) {
+        this.mediaPlayer = mediaPlayer;
+    }
+
+    @Override
+    public void playFile(String filename) {
+        mediaPlayer.play(filename);
+    }
 }
