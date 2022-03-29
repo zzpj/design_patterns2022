@@ -22,7 +22,7 @@ class ElemntFinderTest {
     }
 
     @ParameterizedTest
-    @CsvSource({"aa, 0", "bb, 1", "dd, 2", "cc, 3"})
+    @CsvSource({"aa, 0", "bb, 1", "dd, 2", "cc, -3"})
     public void shouldSearchUsingBinaryAlgorithm(String word, int index) {
         ElemntFinder elemntFinder = new ElemntFinder(new BinarySearchStrategy());
         int actualIndex = elemntFinder.findElement(words, word);
