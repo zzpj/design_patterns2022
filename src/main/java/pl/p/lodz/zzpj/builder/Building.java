@@ -4,7 +4,6 @@ import java.util.Date;
 import java.util.Map;
 
 public class Building {
-
     private Long id;
     private String streetName;
     private int streetNumber;
@@ -23,6 +22,27 @@ public class Building {
     private boolean hasFence;
     private boolean petFriendlyFlag;
     private boolean commercialGroundFloorFlag;
+
+    public Building(BuildingBuilder builder){
+        this.id = id;
+        this.streetName = builder.streetName;
+        this.streetNumber = builder.streetNumber;
+        this.zipCode = builder.zipCode;
+        this.buildingCompanyName = builder.buildingCompanyName;
+        this.landlordName = builder.landlordName;
+        this.constructionYear = builder.constructionYear;
+        this.constructionEndYear = builder.constructionEndYear;
+        this.flatsNumber = builder.flatsNumber;
+        this.completeRentArea = builder.completeRentArea;
+        this.completeRentAreaUnit = builder.completeRentAreaUnit;
+        this.flatsDescription = builder.flatsDescription;
+        this.flatsPrices = builder.flatsPrices;
+        this.hasCarPark = builder.hasCarPark;
+        this.hasGarden = builder.hasGarden;
+        this.hasFence = builder.hasFence;
+        this.petFriendlyFlag = builder.petFriendlyFlag;
+        this.commercialGroundFloorFlag = builder.commercialGroundFloorFlag;
+    }
 
     public Building(Long id, String streetName, int streetNumber, String zipCode) {
         this.id = id;
@@ -266,5 +286,106 @@ public class Building {
 
     public void setCommercialGroundFloorFlag(boolean commercialGroundFloorFlag) {
         this.commercialGroundFloorFlag = commercialGroundFloorFlag;
+    }
+    public static class BuildingBuilder {
+        //Value is implemented builder for our onw class
+        public Long id;
+        public String streetName;
+        public int streetNumber;
+        public String zipCode;
+        public String buildingCompanyName;
+        public String landlordName;
+        public Date constructionYear;
+        public Date constructionEndYear;
+        public long flatsNumber;
+        public long completeRentArea;
+        public String completeRentAreaUnit;
+        public Map<String, String> flatsDescription;
+        public Map<String, Long> flatsPrices;
+        public boolean hasCarPark;
+        public boolean hasGarden;
+        public boolean hasFence;
+        public boolean petFriendlyFlag;
+        public boolean commercialGroundFloorFlag;
+
+        public BuildingBuilder() {
+        }
+        public BuildingBuilder id(Long id){
+            this.id = id;
+            return this;
+        }
+
+        public BuildingBuilder streetName(String streetName){
+            this.streetName = streetName;
+            return this;
+        }
+        public BuildingBuilder streetNumber(int streetNumber){
+            this.streetNumber = streetNumber;
+            return this;
+        }
+        public BuildingBuilder zipCode(String zipCode){
+            this.zipCode = zipCode;
+            return this;
+        }
+        public BuildingBuilder buildingCompanyName(String buildingCompanyName){
+            this.buildingCompanyName = buildingCompanyName;
+            return this;
+        }
+        public BuildingBuilder landlordName(String landlordName){
+            this.landlordName = landlordName;
+            return this;
+        }
+        public BuildingBuilder constructionYear(Date constructionYear){
+            this.constructionYear = constructionYear;
+            return this;
+        }
+        public BuildingBuilder constructionEndYear(Date constructionEndYear){
+            this.constructionEndYear = constructionEndYear;
+            return this;
+        }
+        public BuildingBuilder flatsNumber(Long flatsNumber){
+            this.flatsNumber = flatsNumber;
+            return this;
+        }
+        public BuildingBuilder completeRentArea(Long completeRentArea){
+            this.completeRentArea = completeRentArea;
+            return this;
+        }
+        public BuildingBuilder completeRentAreaUnit(String completeRentAreaUnit){
+            this.completeRentAreaUnit = completeRentAreaUnit;
+            return this;
+        }
+        public BuildingBuilder flatsDescription(Map<String, String> flatsDescription){
+            this.flatsDescription = flatsDescription;
+            return this;
+        }
+        public BuildingBuilder flatsPrices(Map<String, Long> flatsPrices){
+            this.flatsPrices = flatsPrices;
+            return this;
+        }
+        public BuildingBuilder hasCarPark(Boolean hasCarPark){
+            this.hasCarPark = hasCarPark;
+            return this;
+        }
+        public BuildingBuilder hasGarden(Boolean hasGarden){
+            this.hasGarden = hasGarden;
+            return this;
+        }
+        public BuildingBuilder hasFence(Boolean hasFence){
+            this.hasFence = hasFence;
+            return this;
+        }
+        public BuildingBuilder petFriendlyFlag(Boolean petFriendlyFlag){
+            this.petFriendlyFlag = petFriendlyFlag;
+            return this;
+        }
+        public BuildingBuilder commercialGroundFloorFlag(Boolean commercialGroundFloorFlag){
+            this.commercialGroundFloorFlag = commercialGroundFloorFlag;
+            return this;
+        }
+        public Building build(){
+            Building building = new Building(this);
+            return building;
+        }
     }
 }
