@@ -1,8 +1,10 @@
 package pl.p.lodz.zzpj.builder;
 
+import lombok.Builder;
+
 import java.util.Date;
 import java.util.Map;
-
+@Builder
 public class Building {
 
     private Long id;
